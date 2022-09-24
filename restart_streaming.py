@@ -9,7 +9,7 @@ def script_properties():
     props = obs.obs_properties_create()
     obs.obs_properties_add_bool(props, "enabled", "Activo")
     obs.obs_properties_add_int_slider(
-        props, "interval", "Intervalo en segundos", 5, 60, 1)
+        props, "interval", "Intervalo en segundos", 20, 60, 1)
     return props
 
 
