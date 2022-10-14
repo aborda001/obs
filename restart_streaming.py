@@ -21,10 +21,14 @@ def check_stream(initial: bool = False) -> None:
 
 def script_update(settings) -> None:
     if obs.obs_data_get_bool(settings, "enabled"):
-        print('Add timer!')
+        interval = 1 * obs.obs_data_get_int(settings, "interval") * 1000
+        if (interval < 1000):
+            interval = 5000
+
+        print(f'Add timer! {interval}')
         obs.timer_add(
             check_stream,
-            1 * obs.obs_data_get_int(settings, "interval") * 1000)
+            interval)
     else:
         print('Remove timer!')
         obs.timer_remove(check_stream)
